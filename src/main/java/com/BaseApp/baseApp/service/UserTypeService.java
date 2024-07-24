@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UserTypeService {
@@ -25,12 +24,12 @@ public class UserTypeService {
         return userTypeRepository.findAll();
     }
 
-    public Optional<UserType> getUserTypeById(UUID id) {
+    public Optional<UserType> getUserTypeById(Long id) {
         return userTypeRepository.findById(id);
     }
 
     // Update
-    public UserType updateUserType(UUID id, UserType userTypeDetails) {
+    public UserType updateUserType(Long id, UserType userTypeDetails) {
         UserType userType = userTypeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("UserType not found with id " + id));
 
@@ -40,7 +39,7 @@ public class UserTypeService {
     }
 
     // Delete
-    public void deleteUserType(UUID id) {
+    public void deleteUserType(Long id) {
         UserType userType = userTypeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("UserType not found with id " + id));
 
